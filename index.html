@@ -1,152 +1,49 @@
-
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
-    <meta charset="UTF-8">
-    <title>这片地从此就姓沈了嘿嘿</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="./public/style.css">
-    <script src="https://unpkg.com/vue"></script>
+  <meta charset="UTF-8">
+  <title>这片地从此就姓沈了嘿嘿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./public/style.css">
+  <script src="https://unpkg.com/vue"></script>
 </head>
+
 <body>
-<div id="app">
-  <div class="main-header">
-    <div class="container">
-      <h1>优秀站点收录</h1>
+  <div id="app">
+    <div class="main-header">
+      <div class="container">
+        <h1>优秀站点收录</h1>
+      </div>
     </div>
-  </div>
-<div class="container" >
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">NodeJS学习资料</h3>
-        </div>
-        <div class="panel-body" >
-          <li class="list-group-item" v-for="item in websiteList">
-            <a v-bind:href='item.site'>
-              {{ item.name }}
-            </a>
-          </li>
-        </div>
-      
-    </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Javascript学习资料</h3>
-        </div>
-        <div class="panel-body">
-          <li class="list-group-item">
-            <a href="http://eloquentjavascript.net/index.html">
-              笑来老师推荐学习书：Eloquent JavaScript
-            </a>
-          </li>
-          <li class="list-group-item">
-            <a href="">
-              《Javascript权威指南》(淘宝前端团队翻译)
-            </a>
-          </li>
-          <li class="list-group-item">
-            <a href="http://js.xinshengdaxue.com/">
-                JavaScript编程入门 · 新生大学
-            </a>
-          </li>
+    <div class="container" v-for="data in siteList">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{ data.title }}</h3>
+          </div>
+          <div class="panel-body">
+            <li class="list-group-item" v-for="item in data.content">
+              <a v-bind:href='item.site'>
+                {{ item.name }}
+              </a>
+            </li>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Linux学习资料</h3>
-        </div>
-        <div class="panel-body">
-          <li class="list-group-item">
-            <a href="http://linux.vbird.org/">
-              鸟哥的 Linux 私房菜 -- 鸟哥的 Linux 私房菜 首页
-            </a>
-          </li>
-
-          <li class="list-group-item">
-            <a href="http://www.study-area.org/network/network.htm">
-              网路基础
-            </a>
-          </li>
-          <li class="list-group-item">
-            <a href="http://www.study-area.org/compu/compu.htm">
-              电脑基础
-            </a>
-          </li>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-<div>
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">工具篇</h3>
-        </div>
-        <div class="panel-body" >
-           <li class="list-group-item">
-            <a href="https://www.zybuluo.com/mdeditor">
-              Cmd Markdown编辑阅读器(在线)
-            </a>
-          </li>
-          <li class="list-group-item">
-            <a href="https://userscripts-mirror.org/scripts/show/150110">
-              简繁转换--油猴脚本
-            </a>
-          </li>
-          <li class="list-group-item"  v-for="item in toolkitList">
-            <a v-bind:href="item.site">
-              {{ item.name }}
-            </a>
-          </li>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
 </body>
-
+<script src="./public/siteList.js"></script>
 <script>
-var app = new Vue({
-  el:"#app",
-  data:{
-    websiteList: [{
-      site:'https://github.com/alsotang/node-lessons',
-      name:'《Node.js 包教不包会》 -- by alsotang'
-    },
-    {
-        site:'https://book.douban.com/subject/25768396/',
-        name:'深入浅出Node.js'
-    }],
-    toolkitList: [
-    {
-      site: 'http://fengmk2.com/blog/2014/03/node-env-and-faster-npm.html',
-      name:'《快速搭建 Node.js 开发环境以及加速 npm》'
-    }],
-    Vue_List: [
-    {
-      site: 'https://github.com/bailicangdu/vue2-elm',
-      name:'vue2-elm || 饿了么前端实践'
-    }]
-
-  }
-})
-
-
+  var app = new Vue({
+    el: "#app",
+    data: {
+      siteList: siteList
+    }
+  })
 </script>
-  
+
 </html>
