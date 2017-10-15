@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>cnode#Vue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./public/style.css">
+  <link href="./public/semantic.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    
+    <div class="ui container">
+        <!-- 左侧分割线 -->
+        <!-- <div class="ui container"> -->
+          <div class="ui two column middle aligned very relaxed stackable grid">
+              <div class="column">
+                <div class="ui form">
+                  <div class="field">
+                    <label>Username</label>
+                    <div class="ui left icon input">
+                      <input type="text" placeholder="Username">
+                      <i class="user icon"></i>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Password</label>
+                    <div class="ui left icon input">
+                      <input type="password">
+                      <i class="lock icon"></i>
+                    </div>
+                  </div>
+                  <div class="ui blue submit button">Login</div>
+                </div>
+              </div>
+              <div class="ui vertical divider">Or </div>
+              <div class="center aligned column">
+                <div class="ui big green labeled icon button"><i class="signup icon"></i> Sign Up </div>
+              </div>
+            </div>
+          <!-- </div> -->
+        <!-- 水平分割线 -->
+        <h4 class="ui horizontal divider header"><i class="tag icon"></i> Description </h4>
+        <p>狗粮四季皆宜。全球99.8%的狗都吃狗粮。</p>
+        <h4 class="ui horizontal divider header"><i class="bar chart icon"></i> Specifications </h4>
+        <table class="ui definition table">
+          <tbody>
+            <tr>
+              <td class="two wide column">尺寸</td>
+              <td>1" x 2"</td>
+            </tr>
+            <tr>
+              <td>重量</td>
+              <td>6盎司</td>
+            </tr>
+            <tr>
+              <td>颜色</td>
+              <td>浅黄</td>
+            </tr>
+            <tr>
+              <td>气味</td>
+              <td>非常规现象</td>
+            </tr>
+          </tbody>
+        </table>
+      
+
+        <!-- 反转分割线 -->
+        <div class="ui inverted segment">
+            <p>{{text1}}</p>
+            <!-- div用class做的分割线 -->
+            <div class="ui inverted divider"></div>
+            <p>{{text1}}</p>
+            <h4 class="ui horizontal inverted divider">Horizontal </h4>
+          </div>
+      </div>
+
+  </div>
+</body>
+<script>
+  var app = new Vue({
+    el:'#app',
+    data:{
+      text1:`一段测试用的填充内容，没有任何意义。请更多的关注样式而不是这些文字。这段话为啥会被拿来填充内容我也加粗的不知道，不过它肯定会被无视的，所以就随便写点什么好了，就是给你们看个样子的。这些一点意义都没有的内容不是给你们看的，不要看我，看样式，可以不？这些内容都是扯淡的，文字也都是随便写的，并没有什么用——看看就好。写这么多废话也是很费劲的事情，对吧。不管怎么说我写这么多东西都是没有用的。一段测试用的填充内容，没有任何意义链接。请更多的关注样式而不是这些文字。这段话为啥会被拿来填充内容我也不知道，不过它肯定会被无视的，所以就随便写点什么好了，就是给你们看个样子的。这些一点意义都没有的内容不是给你们看的，不要看我，看样式，可以不？这些内容都是扯淡的，文字也都是随便写的，并没有什么用——看看就好。写这么多废话也是很费劲的事情，对吧。不管怎么说我写这么多东西都是没有用的。
+        文本容器`,
+      text2:`一段测试用的填充内容，没有任何意义。请更多的关注样式而不是这些文字。`
+    }
+  })
+  /*
+  var app = new Vue({
+    el: "#app",
+    data: {
+      siteList: []
+    },
+    methods:{
+      fetchData(){
+        axios.get('https://cnodejs.org/api/v1/topics')
+          .then(function(response){
+            if (response.success = 'true'){
+              alert('成功导入数据');
+            } else { return;}
+            //let jump = response.data.data;
+            //alert(/*JSON.stringify(*/jump/*));
+            //alert(typeof response.data.data);  //object
+            app.siteList = response.data.data;
+          }) 
+      }
+    }
+  })
+  app.fetchData();
+  */
+</script>
+
+</html>

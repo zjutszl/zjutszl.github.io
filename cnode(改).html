@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>cnode#Vue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./public/style.css">
+  <link href="./public/semantic.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="main-header">
+      <div class="container">
+        <h1>cnode#Vue</h1>
+      </div>
+    </div>
+
+      <div class="ui container">
+        <div class="ui buttons">
+          <button class="ui active button" value="">all</button>
+            <button @click="sortTopics" class="ui button" value="good">good</button>
+            <button @click="sortTopics" class="ui button" value="top">top</button>
+
+            <button @click="sortTopics" class="ui button" value="share">share</button>
+            <button @click="sortTopics" class="ui button" value="ask">ask</button>
+        </div>
+        <div class="ui segment" v-for="data in siteList" v-if="data['tab']==topics">
+          <div class="panel-heading" >
+            <h3 class="panel-title">{{ data.title }}</h3>
+          </div>
+          <!-- <div v-html="data.content"></div> -->
+        </div>
+      </div>
+
+  </div>
+</body>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      siteList: [],
+      unchangableList:[],
+      topics:""
+    },
+    methods:{
+      fetchData(){
+        axios.get('https://cnodejs.org/api/v1/topics')
+          .then(function(response){
+            if (response.success = 'true'){
+              alert('成功导入数据');
+            } else { return;}
+            //let jump = response.data.data;
+            //alert(/*JSON.stringify(*/jump/*)*/);
+            //alert(typeof response.data.data);  //object
+            app.unchangableList = app.siteList = response.data.data;
+          }) 
+      },
+      sortTopics(){
+        app.topics = event.target.value;
+        //alert(`topics = ${app.topics}`);
+
+        /*
+        app.siteList = app.unchangableList.filter(function(arg){
+          let kk = event.target.value;
+          return (arg[kk] === true);
+        })
+        */
+        /* 
+        var kk = event.target;
+        alert(kk);
+        */
+      }
+    }
+  })
+  app.fetchData();
+</script>
+
+</html>
