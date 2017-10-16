@@ -5,80 +5,138 @@
   <meta charset="UTF-8">
   <title>cnode#Vue</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
   <link rel="stylesheet" href="./public/style.css">
-  <link href="./public/semantic.min.css" rel="stylesheet" type="text/css"/>
-  <script src="https://unpkg.com/vue"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
   <div id="app">
-    <div class="main-header">
+    <!-- <div class="main-header">
       <div class="container">
         <h1>cnode#Vue</h1>
       </div>
-    </div>
+    <!-- </div> -->
+    <!-- <div class="ui container">
 
-      <div class="ui container">
-        <div class="ui buttons">
-          <button class="ui active button" value="">all</button>
-            <button @click="sortTopics" class="ui button" value="good">good</button>
-            <button @click="sortTopics" class="ui button" value="top">top</button>
+    </div>-->
 
-            <button @click="sortTopics" class="ui button" value="share">share</button>
-            <button @click="sortTopics" class="ui button" value="ask">ask</button>
-        </div>
-        <div class="ui segment" v-for="data in siteList" v-if="data['tab']==topics">
-          <div class="panel-heading" >
-            <h3 class="panel-title">{{ data.title }}</h3>
+    <div class="ui container">
+
+      <div class="ui secondary  menu">
+        <a class="item active" @click="sortTopics" value="">Home</a>
+        <a class="item" @click="sortTopics" value="share">share</a>
+        <a class="item" @click="sortTopics" value="ask">问答</a>
+        <!-- <a class="item">好友 </a> -->
+        <div class="right menu">
+          <div class="item">
+            <div class="ui icon input">
+              <input type="text" placeholder="Search...">
+              <i class="search link icon"></i>
+            </div>
           </div>
-          <!-- <div v-html="data.content"></div> -->
+          <a class="ui item">登出 </a>
         </div>
       </div>
+      <div class="ui buttons">
+
+        <button @click="sortTopics" class="ui active button" value="share">share</button>
+        <button @click="sortTopics" class="ui button" value="ask">ask</button>
+      </div>
+      <div class="ui segments" v-for="data in siteList" v-if="data['tab']==topics">
+        <div class="ui segment">
+          <div class="ui top attached label">HTML</div>
+          <h2 class="ui header">{{ data.title }}</h2>
+        </div>
+        <!-- <div class="panel-heading" >
+            <h3 class="panel-title"><a :href=`https://cnodejs.org/api/v1/topic/${data.id}`></a></h3>
+          </div> -->
+        <div class="ui segment" v-html="data.content"></div>
+      </div>
+    </div>
+    <div class="ui center aligned basic segment">
+      <div class="ui horizontal divider">特别鸣谢</div>
+      <!-- 
+        <div class="card">
+            <div class="image">
+                <img src="https://o4a7cbihz.qnssl.com/avatar/53cdccee-0cee-415f-817c-a31ed979107e">
+            </div>
+            <div class="content">
+              <div class="header">JS编程入门第一期</div>
+              <div class="meta">
+                <!-- <a>Friends</a> -->
+      <!-- </div>
+              <div class="description">
+                学习JS编程思想，掌握JS编程技巧
+              </div>
+            </div>
+            <div class="extra content">
+              <button class="ui button"><a href="https://www.xinshengdaxue.com/lessons/3">GO</a></button>
+            </div>
+          </div> -->
+      <!-- <div class="ui two column grid">
+            <div class="column">
+                <div class="ui centered card">
+                    <div class="image">
+                      <img src="https://o4a7cbihz.qnssl.com/avatar/53cdccee-0cee-415f-817c-a31ed979107e">
+                    </div>
+                    <div class="content">
+                      <a class="header">Elyse</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="column">
+                <div class="ui centered card">
+                    <div class="image">
+                      <img src="https://o4a7cbihz.qnssl.com/avatar/53cdccee-0cee-415f-817c-a31ed979107e">
+                    </div>
+                    <div class="content">
+                      <a class="header">Elyse</a>
+                    </div>
+                  </div>
+            </div>
+          </div> -->
+      <div class="ui centered cards">
+        <div class="ui card">
+          <div class="ui image">
+            <img src="https://o4a7cbihz.qnssl.com/avatar/53cdccee-0cee-415f-817c-a31ed979107e">
+          </div>
+          <div class="content">
+            <a class="header">新生大学JavaScript入门课</a>
+            <div class="meta">
+                <p class="date">Create in Aug 2017</p>
+              <img class="ui avatar image" src="./public/xgyang.jpg"><span>徐高阳</span>
+            </div>
+          </div>
+          <!-- <div class="extra content">
+            <div class="right floated author">
+              <img class="ui avatar image" src="./public/xgyang.jpg">徐高阳</div>
+            </div>  -->
+        </div>
+        
+<!--         
+        <div class="ui card">
+          <a class="image">
+            <img src="https://o4a7cbihz.qnssl.com/avatar/53cdccee-0cee-415f-817c-a31ed979107e">
+          </a>
+          <div class="content">
+            <a class="header">Elyse</a>
+          </div>
+        </div> -->
+
+      </div>
+
+
+      <!-- <div class="ui teal labeled icon button">Create New Order <i class="add icon"></i> </div> -->
+    </div>
 
   </div>
 </body>
-<script>
-  var app = new Vue({
-    el: "#app",
-    data: {
-      siteList: [],
-      unchangableList:[],
-      topics:""
-    },
-    methods:{
-      fetchData(){
-        axios.get('https://cnodejs.org/api/v1/topics')
-          .then(function(response){
-            if (response.success = 'true'){
-              alert('成功导入数据');
-            } else { return;}
-            //let jump = response.data.data;
-            //alert(/*JSON.stringify(*/jump/*)*/);
-            //alert(typeof response.data.data);  //object
-            app.unchangableList = app.siteList = response.data.data;
-          }) 
-      },
-      sortTopics(){
-        app.topics = event.target.value;
-        //alert(`topics = ${app.topics}`);
 
-        /*
-        app.siteList = app.unchangableList.filter(function(arg){
-          let kk = event.target.value;
-          return (arg[kk] === true);
-        })
-        */
-        /* 
-        var kk = event.target;
-        alert(kk);
-        */
-      }
-    }
-  })
-  app.fetchData();
-</script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="./public/semantic.min.css" rel="stylesheet" type="text/css" />
+<script src="https://unpkg.com/vue"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/core.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="./public/app.js"></script>
 
 </html>

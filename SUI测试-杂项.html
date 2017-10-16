@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>cnode#Vue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./public/style.css">
+  <link href="./public/semantic.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+    
+    <div class="ui padded segment">
+      <p>{{ text1 }}</p>
+    </div>
+
+    <div class="ui container">
+      <div class="ui padded segment">
+        {{text1}}
+      </div>
+      <div class="ui orange raised segment">
+        {{text1}}
+      </div>
+      <div class="ui  inverted segment">
+        {{text1}}
+      </div>
+      <div class="ui attached segment">
+        not too much words cause i don't want to say right now
+      </div>
+      <div class="ui compact segment">
+        not too much words cause i don't want to say right now
+        not too much words cause i don't want to say right now
+        not too much words cause i don't want to say right now
+        not too much words cause i don't want to say right now
+        not too much words cause i don't want to say right now
+        not too much words cause i don't want to say right now
+        not too much words cause i don't want to say right now
+        not too much words
+      </div>
+      <div class="ui center aligned basic segment">
+        <div class="ui left icon action input">
+          <i class="search icon"></i>
+          <input type="text" placeholder="Order #">
+          <div class="ui blue submit button">搜索</div>
+        </div>
+        <div class="ui horizontal divider">Or </div>
+        <div class="ui teal labeled icon button">Create New Order <i class="add icon"></i> </div>
+      </div>
+    </div>
+
+
+  </div>
+</body>
+<script>
+  var app = new Vue({
+    el:'#app',
+    data:{
+      text1:`一段测试用的填充内容，没有任何意义。请更多的关注样式而不是这些文字。这段话为啥会被拿来填充内容我也加粗的不知道，不过它肯定会被无视的，所以就随便写点什么好了，就是给你们看个样子的。这些一点意义都没有的内容不是给你们看的，不要看我，看样式，可以不？这些内容都是扯淡的，文字也都是随便写的，并没有什么用——看看就好。写这么多废话也是很费劲的事情，对吧。不管怎么说我写这么多东西都是没有用的。一段测试用的填充内容，没有任何意义链接。请更多的关注样式而不是这些文字。这段话为啥会被拿来填充内容我也不知道，不过它肯定会被无视的，所以就随便写点什么好了，就是给你们看个样子的。这些一点意义都没有的内容不是给你们看的，不要看我，看样式，可以不？这些内容都是扯淡的，文字也都是随便写的，并没有什么用——看看就好。写这么多废话也是很费劲的事情，对吧。不管怎么说我写这么多东西都是没有用的。
+        文本容器`,
+      text2:`一段测试用的填充内容，没有任何意义。请更多的关注样式而不是这些文字。`
+    }
+  })
+  /*
+  var app = new Vue({
+    el: "#app",
+    data: {
+      siteList: []
+    },
+    methods:{
+      fetchData(){
+        axios.get('https://cnodejs.org/api/v1/topics')
+          .then(function(response){
+            if (response.success = 'true'){
+              alert('成功导入数据');
+            } else { return;}
+            //let jump = response.data.data;
+            //alert(/*JSON.stringify(*/jump/*));
+            //alert(typeof response.data.data);  //object
+            app.siteList = response.data.data;
+          }) 
+      }
+    }
+  })
+  app.fetchData();
+  */
+</script>
+
+</html>
