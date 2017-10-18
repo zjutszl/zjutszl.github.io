@@ -2,40 +2,60 @@
     el: "#app",
     data: {
       siteList: [],
-      unchangableList:[],
-      topics:""
+      topics:"",
+      warning:[],
+      limit_topic:10,
+      page_number:0,
+      tab_string:"share"
     },
     methods:{
       fetchData(){
-        axios.get('https://cnodejs.org/api/v1/topics')
+        axios.get('https://cnodejs.org/api/v1/topics',{
+          params:{
+            tab:this.tab_string,
+            page:this.page_number,
+            limit:this.limit_topic
+          }
+        })
           .then(function(response){
             if (response.success = 'true'){
-              alert('成功导入数据');
+              if (app.warning.indexOf("fetchData") === -1){
+                app.warning.push("fetchData");
+              }
             } else { return;}
             //let jump = response.data.data;
-            //alert(/*JSON.stringify(*/jump/*)*/);
+            
             //alert(typeof response.data.data);  //object
-            app.unchangableList = app.siteList = response.data.data; //response.data.data才能获得response中的data数组。
+            let middle =response.data.data;
+            for (var kk in middle){
+              kk.visible = false;
+            }
+            app.siteList = middle;
+           
+            //app.siteList = response.data.data; //response.data.data才能获得response中的data数组
           }) 
       },
-      sortTopics(){
-        app.topics = event.target.value;
-        //alert(`topics = ${app.topics}`);
-
-        /*
-        app.siteList = app.unchangableList.filter(function(arg){
-          let kk = event.target.value;  //event.target.value能获取当前事件的对象
-          return (arg[kk] === true);
-        })
-        */
-        /* 
-        var kk = event.target;
-        alert(kk);
-        */
+      chooseTab (){
+        app.tab_string = event.target.value;
+        app.fetchData();
+      },
+      openContent (){
+        //...
       }
     }
   })
   app.fetchData();
+
+  //图片的切换
   $('.special.cards .image').dimmer({
     on: 'hover'
   });
+  //可关闭的消息
+  $('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
