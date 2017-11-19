@@ -23,6 +23,10 @@ var siteList= [
         {
             name:'JavaScript编程入门 · 新生大学',
             site:'http://js.xinshengdaxue.com/'
+        },
+        {
+            name:'JavaScript Promise迷你书',
+            site:'http://liubin.org/promises-book/#chapter1-what-is-promise'
         }
     ]
     },
